@@ -6,7 +6,7 @@
 package db;
 
 import cls.Member;
-import cls.Payment;
+import cls.Ticket;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,36 +26,9 @@ public class queryPayment {
     SimpleDateFormat entranceTime = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
     SimpleDateFormat exitTime = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 
-    public Payment getData(String code) {
-        Payment res = new Payment(code);
-        Date skr = new Date();
-        Koneksi connect = new Koneksi();
-        Connection con = connect.logOn();
-        String query = "select * from parkingtrx where trxid = '" + code + "'";
-        try {
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(query);
-            while (rs.next()) {
-                res.setGate(rs.getInt("entrancegate"));
-                res.setLicenseNum(rs.getString("numberplate"));
-                res.setVehivleType(rs.getString("vehicletypes"));
-                res.setTarifType(rs.getString("tarifftypes"));
-                res.setDateEntrance(entranceTime.format(rs.getTimestamp("entrancetime")).toString());
-                res.setDateExit(exitTime.format(skr));
-                res.setMemberStatus(cekMember(res.getLicenseNum()));
-                //Qustioneun
-                res.setPrice(rs.getInt("amounttopay"));
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(queryTicket.class.getName()).log(Level.SEVERE, null, e);
-        }
-        connect.logOff();
-        return res;
-    }
-
-    private int getPrice(Payment pym) {
+    private int getPrice(Ticket pym) {
         int res = 0;
-        String query = "select * from tariff where types = '" + pym.getTarifType() + "';";
+        String query = "select * from tariff where types = '" + pym.getTarifTypes()+ "';";
         Koneksi connect = new Koneksi();
         Connection con = connect.logOn();
         int initTime;

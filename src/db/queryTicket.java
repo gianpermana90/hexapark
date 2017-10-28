@@ -33,10 +33,21 @@ public class queryTicket {
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 res.setBarcode(barcode);
-                res.setDateEntrance(entranceTime.format(rs.getTimestamp("entrancetime")).toString());
-//                res.setDateExit(rs.getString(""));
-                res.setGate(rs.getInt("entrancegate"));
+                res.setEntranceGate(rs.getInt("entrancegate"));
+                res.setEntranceTime(entranceTime.format(rs.getTimestamp("entrancetime")).toString());
+                res.setExitGate(rs.getInt("exitgate"));
+//                res.setExitTime(exitTime.format(rs.getTimestamp("exittime")).toString());
+                res.setPrice(rs.getInt("amounttopay"));
+                res.setPaymentTime(rs.getString("paymenttime"));
+                res.setPaymentMethods(rs.getString("paymentmethods"));
                 res.setLicenseNumber(rs.getString("numberplate"));
+                res.setVehicleTypes(rs.getString("vehicletypes"));
+                res.setTarifTypes(rs.getString("tarifftypes"));
+                res.setOverNightParking(rs.getString("overnightparking"));
+                res.setGateInPicture1(rs.getString("gateinpicone"));
+                res.setGateInPicture2(rs.getString("gateinpictwo"));
+                res.setGateOutPicture1(rs.getString("gateoutpic"));
+                res.setGateOutPicture2(rs.getString("gateoutpictwo"));
             }
         }catch(SQLException e){
             Logger.getLogger(queryTicket.class.getName()).log(Level.SEVERE, null, e);
