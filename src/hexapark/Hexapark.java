@@ -727,7 +727,32 @@ public class Hexapark extends javax.swing.JFrame {
         tkt_gate.setText(Integer.toString(tkt.getEntranceGate()));
         tkt_entrance.setText(tkt.getEntranceTime());
         tkt_noPol.setText(tkt.getLicenseNumber());
-
+        
+        //Testing Cek Harga
+        queryPayment qp = new queryPayment();
+        int[] tarifInfo = qp.getPriceInfo(tkt);
+        System.out.println("Tarif Info");
+        System.out.print(tarifInfo[0]+" ");
+        System.out.print(tarifInfo[1]+" ");
+        System.out.print(tarifInfo[2]+" ");
+        System.out.println(tarifInfo[3]);
+        int harga=0;
+        if(qp.cekMember(tkt.getBarcode()).equalsIgnoreCase("YES")){
+            System.out.println("Member Mah Gratis");
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I A")){
+            System.out.println(tkt.getTarifTypes());
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I B")){
+            System.out.println(tkt.getTarifTypes());
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I C")){
+            System.out.println(tkt.getTarifTypes());
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("III A")){
+            System.out.println(tkt.getTarifTypes());
+            harga = qp.determinePriceInap(tkt.getEntranceTime(), tkt.getExitTime(), tarifInfo[1], tarifInfo[2], tarifInfo[0]);
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("IV")){
+            System.out.println(tkt.getTarifTypes());
+            harga = qp.determinePriceInap(tkt.getEntranceTime(), tkt.getExitTime(), tarifInfo[1], tarifInfo[2], tarifInfo[0]);
+        }
+        System.out.println(harga);
     }
 
     private void getDataPayment(String code) {
