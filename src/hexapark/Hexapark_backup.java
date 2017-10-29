@@ -30,21 +30,20 @@ import javax.swing.JOptionPane;
  *
  * @author Hades
  */
-public class Hexapark extends javax.swing.JFrame {
+public class Hexapark_backup extends javax.swing.JFrame {
 
     private Ticket tkt = new Ticket();
     private CardLayout cl;
-    private CardLayout cl2;
     SimpleDateFormat entranceTime = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
     SimpleDateFormat exitTime = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
 
     /**
      * Creates new form Main
      */
-    public Hexapark() {
+    public Hexapark_backup() {
         initComponents();
         //setLocationRelativeTo(this);
-        makeFrameFullSize(this);        
+        makeFrameFullSize(this);
     }
 
     private void makeFrameFullSize(JFrame aFrame) {
@@ -61,15 +60,11 @@ public class Hexapark extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox();
         jPanel13 = new javax.swing.JPanel();
-        jPanel_step = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        img_stepScan = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        img_stepInfo = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        img_stepPayment = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        img_stepFinish = new javax.swing.JLabel();
+        jToolBar_Step = new javax.swing.JToolBar();
+        btn_scanTiket = new javax.swing.JButton();
+        btn_parkingInfo = new javax.swing.JButton();
+        btn_payment = new javax.swing.JButton();
+        btn_finish = new javax.swing.JButton();
         jPanel_main = new javax.swing.JPanel();
         jPanel_scan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -132,116 +127,60 @@ public class Hexapark extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel13.setBackground(new java.awt.Color(51, 51, 51));
 
-        jPanel_step.setLayout(new java.awt.CardLayout());
+        jToolBar_Step.setBorder(null);
+        jToolBar_Step.setFloatable(false);
+        jToolBar_Step.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar_Step.setRollover(true);
+        jToolBar_Step.setMaximumSize(new java.awt.Dimension(280, 428));
+        jToolBar_Step.setMinimumSize(new java.awt.Dimension(280, 428));
+        jToolBar_Step.setPreferredSize(new java.awt.Dimension(280, 428));
 
-        img_stepScan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Scan Barcode.png"))); // NOI18N
+        btn_scanTiket.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_scanTiket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_scan.png"))); // NOI18N
+        btn_scanTiket.setText("Scan Tiket");
+        btn_scanTiket.setFocusable(false);
+        btn_scanTiket.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_scanTiket.setMaximumSize(new java.awt.Dimension(280, 107));
+        btn_scanTiket.setMinimumSize(new java.awt.Dimension(280, 107));
+        btn_scanTiket.setPreferredSize(new java.awt.Dimension(280, 107));
+        jToolBar_Step.add(btn_scanTiket);
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel15Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepScan, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(img_stepScan, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(277, Short.MAX_VALUE)))
-        );
+        btn_parkingInfo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_parkingInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_parkingInfo.png"))); // NOI18N
+        btn_parkingInfo.setText("Info Parkir");
+        btn_parkingInfo.setFocusable(false);
+        btn_parkingInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_parkingInfo.setMaximumSize(new java.awt.Dimension(280, 107));
+        btn_parkingInfo.setMinimumSize(new java.awt.Dimension(280, 107));
+        btn_parkingInfo.setPreferredSize(new java.awt.Dimension(280, 107));
+        jToolBar_Step.add(btn_parkingInfo);
 
-        jPanel_step.add(jPanel15, "cardScan");
+        btn_payment.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_payment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_payment.png"))); // NOI18N
+        btn_payment.setText("Pembayaran");
+        btn_payment.setFocusable(false);
+        btn_payment.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_payment.setMaximumSize(new java.awt.Dimension(280, 107));
+        btn_payment.setMinimumSize(new java.awt.Dimension(280, 107));
+        btn_payment.setPreferredSize(new java.awt.Dimension(280, 107));
+        jToolBar_Step.add(btn_payment);
 
-        img_stepInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Info Parkir.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel18Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel18Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(277, Short.MAX_VALUE)))
-        );
-
-        jPanel_step.add(jPanel18, "cardInfo");
-
-        img_stepPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Pembayaran.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel16Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepPayment, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel16Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(277, Short.MAX_VALUE)))
-        );
-
-        jPanel_step.add(jPanel16, "cardPayment");
-
-        img_stepFinish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Selesai.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-            .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel17Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepFinish, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-            .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel17Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(img_stepFinish, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(277, Short.MAX_VALUE)))
-        );
-
-        jPanel_step.add(jPanel17, "cardFinish");
+        btn_finish.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_finish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_finish.png"))); // NOI18N
+        btn_finish.setText("Selesai");
+        btn_finish.setFocusable(false);
+        btn_finish.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_finish.setMaximumSize(new java.awt.Dimension(280, 107));
+        btn_finish.setMinimumSize(new java.awt.Dimension(280, 107));
+        btn_finish.setPreferredSize(new java.awt.Dimension(280, 107));
+        jToolBar_Step.add(btn_finish);
 
         jPanel_main.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel_main.setLayout(new java.awt.CardLayout());
@@ -715,26 +654,20 @@ public class Hexapark extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToolBar_Step, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel_main, javax.swing.GroupLayout.PREFERRED_SIZE, 1054, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel_step, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1082, Short.MAX_VALUE)))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar_Step, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel13Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel_step, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
 
         getContentPane().add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
@@ -751,8 +684,6 @@ public class Hexapark extends javax.swing.JFrame {
             //Tampil Info Parkit
             cl = (CardLayout) jPanel_main.getLayout();
             cl.show(jPanel_main, "card_parkingInfo");
-            cl2 = (CardLayout) jPanel_step.getLayout();
-            cl2.show(jPanel_step, "cardInfo");
         } else {
             System.out.println("Barcode tidak ditemukan");
         }
@@ -762,8 +693,6 @@ public class Hexapark extends javax.swing.JFrame {
         // TODO add your handling code here:
         cl = (CardLayout) jPanel_main.getLayout();
         cl.show(jPanel_main, "card_scan");
-        cl2 = (CardLayout) jPanel_step.getLayout();
-        cl2.show(jPanel_step, "cardScan");
     }//GEN-LAST:event_btnCancelInfoActionPerformed
 
     private void btnPaymentProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentProcessActionPerformed
@@ -772,24 +701,18 @@ public class Hexapark extends javax.swing.JFrame {
         getDataPayment(tkt.getBarcode());
         cl = (CardLayout) jPanel_main.getLayout();
         cl.show(jPanel_main, "card_payment");
-        cl2 = (CardLayout) jPanel_step.getLayout();
-        cl2.show(jPanel_step, "cardPayment");
     }//GEN-LAST:event_btnPaymentProcessActionPerformed
 
     private void btnCancelPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelPaymentActionPerformed
         // TODO add your handling code here:
         cl = (CardLayout) jPanel_main.getLayout();
         cl.show(jPanel_main, "card_parkingInfo");
-        cl2 = (CardLayout) jPanel_step.getLayout();
-        cl2.show(jPanel_step, "cardInfo");
     }//GEN-LAST:event_btnCancelPaymentActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         cl = (CardLayout) jPanel_main.getLayout();
         cl.show(jPanel_main, "card_finish");
-        cl2 = (CardLayout) jPanel_step.getLayout();
-        cl2.show(jPanel_step, "cardFinish");
         try {
             //Capture Webcam (2 Option with different Library)
             //Pilihan 1
@@ -797,7 +720,7 @@ public class Hexapark extends javax.swing.JFrame {
             //Pilihan 2
             new WebcamCapture().capture(tkt.getBarcode());
         } catch (IOException ex) {
-            Logger.getLogger(Hexapark.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Hexapark_backup.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -817,38 +740,36 @@ public class Hexapark extends javax.swing.JFrame {
         // TODO add your handling code here:
         cl = (CardLayout) jPanel_main.getLayout();
         cl.show(jPanel_main, "card_scan");
-        cl2 = (CardLayout) jPanel_step.getLayout();
-        cl2.show(jPanel_step, "cardScan");
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     private void getDataTicket(String code) {
         tkt = new queryTicket().getData(code);
         tkt_barcode.setText(code);
         tkt_gate.setText(Integer.toString(tkt.getEntranceGate()));
         tkt_entrance.setText(tkt.getEntranceTime());
         tkt_noPol.setText(tkt.getLicenseNumber());
-
+        
         //Testing Cek Harga
         queryPayment qp = new queryPayment();
         int[] tarifInfo = qp.getPriceInfo(tkt);
         System.out.println("Tarif Info");
-        System.out.print(tarifInfo[0] + " ");
-        System.out.print(tarifInfo[1] + " ");
-        System.out.print(tarifInfo[2] + " ");
+        System.out.print(tarifInfo[0]+" ");
+        System.out.print(tarifInfo[1]+" ");
+        System.out.print(tarifInfo[2]+" ");
         System.out.println(tarifInfo[3]);
-        int harga = 0;
-        if (qp.cekMember(tkt.getBarcode()).equalsIgnoreCase("YES")) {
+        int harga=0;
+        if(qp.cekMember(tkt.getBarcode()).equalsIgnoreCase("YES")){
             System.out.println("Member Mah Gratis");
-        } else if (tkt.getTarifTypes().equalsIgnoreCase("I A")) {
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I A")){
             System.out.println(tkt.getTarifTypes());
-        } else if (tkt.getTarifTypes().equalsIgnoreCase("I B")) {
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I B")){
             System.out.println(tkt.getTarifTypes());
-        } else if (tkt.getTarifTypes().equalsIgnoreCase("I C")) {
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("I C")){
             System.out.println(tkt.getTarifTypes());
-        } else if (tkt.getTarifTypes().equalsIgnoreCase("III A")) {
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("III A")){
             System.out.println(tkt.getTarifTypes());
             harga = qp.determinePriceInap(tkt.getEntranceTime(), tkt.getExitTime(), tarifInfo[1], tarifInfo[2], tarifInfo[0]);
-        } else if (tkt.getTarifTypes().equalsIgnoreCase("IV")) {
+        }else if(tkt.getTarifTypes().equalsIgnoreCase("IV")){
             System.out.println(tkt.getTarifTypes());
             harga = qp.determinePriceInap(tkt.getEntranceTime(), tkt.getExitTime(), tarifInfo[1], tarifInfo[2], tarifInfo[0]);
         }
@@ -885,14 +806,38 @@ public class Hexapark extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -905,7 +850,7 @@ public class Hexapark extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Hexapark().setVisible(true);
+                new Hexapark_backup().setVisible(true);
             }
         });
     }
@@ -915,10 +860,10 @@ public class Hexapark extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelPayment;
     private javax.swing.JButton btnChangePolNum;
     private javax.swing.JButton btnPaymentProcess;
-    private javax.swing.JLabel img_stepFinish;
-    private javax.swing.JLabel img_stepInfo;
-    private javax.swing.JLabel img_stepPayment;
-    private javax.swing.JLabel img_stepScan;
+    private javax.swing.JButton btn_finish;
+    private javax.swing.JButton btn_parkingInfo;
+    private javax.swing.JButton btn_payment;
+    private javax.swing.JButton btn_scanTiket;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
@@ -949,10 +894,6 @@ public class Hexapark extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -966,7 +907,7 @@ public class Hexapark extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_main;
     private javax.swing.JPanel jPanel_parkingInfo;
     private javax.swing.JPanel jPanel_scan;
-    private javax.swing.JPanel jPanel_step;
+    private javax.swing.JToolBar jToolBar_Step;
     private javax.swing.JLabel tkt_barcode;
     private javax.swing.JLabel tkt_entrance;
     private javax.swing.JLabel tkt_gate;
