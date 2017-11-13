@@ -73,5 +73,20 @@ public class queryTicket {
         conn.logOff();
         return res;
     }
+    
+    public int insertExitDate(String barcode, String date){
+        int res = 0;
+        Koneksi conn = new Koneksi();
+        Connection con = conn.logOn();
+        String query = "UPDATE parkingtrx set exittime = '"+date+"' where trxid = '"+barcode+"'";
+        try {
+            Statement stm = con.createStatement();
+            res = stm.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(queryTicket.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        conn.logOff();
+        return res;
+    }
 
 }
