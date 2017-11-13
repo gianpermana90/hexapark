@@ -5,8 +5,8 @@
  */
 package hexapark;
 
-import camera.WebcamCapture;
-import camera.Camera;
+import tools.WebcamCapture;
+import tools.Camera;
 import cls.Ticket;
 import db.queryPayment;
 import db.queryTicket;
