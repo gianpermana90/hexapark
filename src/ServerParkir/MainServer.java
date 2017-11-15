@@ -37,8 +37,8 @@ public class MainServer {
             System.out.println("Server is listening . . .");
             while (true) {
                 sock = sSock.accept();
-//                ServerThread st = new ServerThread(sock);
-//                st.start();
+                ServerThread st = new ServerThread(sock);
+                st.start();
             }
         } catch (IOException ex) {
             Logger.getLogger(MainServer.class.getName()).log(Level.SEVERE, null, ex);
