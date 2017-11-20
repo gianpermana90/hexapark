@@ -12,6 +12,7 @@ import db.queryTicket;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -34,8 +35,8 @@ import org.json.simple.parser.ParseException;
  */
 public class ServerThread extends Thread {
 
-    private DataInputStream input;
-    private DataOutputStream output;
+    private DataInputStream dataInput;
+    private DataOutputStream dataOutput;
     private Socket sock;
     private MainServer ms = new MainServer();
 
@@ -46,30 +47,38 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         try {
-            input = new DataInputStream(sock.getInputStream());
-            output = new DataOutputStream(sock.getOutputStream());
+            //Membuat saluran data
+            dataInput = new DataInputStream(sock.getInputStream());
+            dataOutput = new DataOutputStream(sock.getOutputStream());
             System.out.println("Client with Local PORT " + sock.getPort() + " is connected");
-            String receivedData = input.readUTF();
-            try {
-                JSONParser parser = new JSONParser();
-                JSONObject jsonObject = (JSONObject) parser.parse(receivedData);
-                //Example
-                String barcode = (String) jsonObject.get("barcode");
-                String license = (String) jsonObject.get("license");
-                String date = (String) jsonObject.get("date");
-//                System.out.println("Barcode: " + barcode);
-//                System.out.println("License Number: " + license);
-//                System.out.println("Date: " + date);
-                int update = new queryTicket().insertExitDate(barcode, date);
-                if (update == 1) {
-                    System.out.println(sock.getPort()+" Vehicle with license number " + (String) jsonObject.get("license") + " left the parking area");
-                } else {
-                    System.out.println(sock.getPort()+" Failed to update data");
-                }
-            } catch (ParseException ex) {
-                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            
+            //Termia data
+            String receivedData = null;
+//            receivedData = dataInput.readLine();  //Python
+            receivedData = dataInput.readUTF(); //Java
+            
+            //Parsing data to JSON
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) parser.parse(receivedData);
+            String barcode = (String) jsonObject.get("barcode");
+            String license = (String) jsonObject.get("license");
+            String date = (String) jsonObject.get("date");
+            
+            System.out.println("Barcode: " + barcode);
+            System.out.println("License Number: " + license);
+            System.out.println("Date: " + date);
+            
+            //Save information ==> Update parkingtrx table 
+            int update = new queryTicket().insertExitDate(barcode, date);
+            if (update == 1) {
+                System.out.println("[" + sock.getPort() + "] Vehicle with license number " + license + " left the parking area");
+            } else {
+                System.out.println("[" + sock.getPort() + "] Failed to update data");
             }
+            
         } catch (IOException ex) {
+            Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(ServerThread.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

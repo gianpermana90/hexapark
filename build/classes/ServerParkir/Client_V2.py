@@ -1,6 +1,6 @@
 import socket
 import sys
-import demjson
+import json
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -11,14 +11,13 @@ print(sys.stderr, 'connecting to %s port %s' % server_address)
 sock.connect(server_address)
 
 try:
-    data = {"barcode": "GI31509009755000","license": "BG 0805 NV","date": "2017-11-13 16:40:38"}
-    json = demjson.encode(data)
-    print(json)
+    data = json.dumps({'barcode': 'GI31509009755000','license': 'BG 0805 NV','date': '2017-11-13 16:40:38'}, sort_keys=True)
+    print(data)
     
     # Send data
     #message = 'Hello World'
-    print(sys.stderr, 'sending "%s"' % json)
-    sock.sendall(json.encode())
+    #print(sys.stderr, 'sending "%s"' % json)
+    sock.sendall(data.encode())
 
     # Look for the response
 ##    amount_received = 0

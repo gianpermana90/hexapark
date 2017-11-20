@@ -29,9 +29,7 @@ public class Server {
     private static final int PORT = 9090;
     private static ServerSocket sSock;
     private static Socket sock;
-    public static List<Socket> listSock = new ArrayList<Socket>();
     
-
     public static void main(String[] args) {
         
         try {

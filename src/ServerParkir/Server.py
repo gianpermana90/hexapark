@@ -1,5 +1,6 @@
 import socket
 import sys
+import json
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -24,9 +25,10 @@ while True:
         print('connection from', client_address)
 
         # Receive the data in small chunks and retransmit it
-        data = connection.recv(10000)
+        data = json.dumps(json.loads(connection.recv(10000).decode()), indent=4)
         #print(sys.stderr, 'received "%s"' %data.decode())
-        print('received "%s"' % data.decode())
+        #print('received "%s"' % data)
+        print(data)
             
     finally:
         # Clean up the connection

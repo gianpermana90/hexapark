@@ -6,29 +6,12 @@ import demjson
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect the socket to the port where the server is listening
-server_address = ('localhost', 10000)
+server_address = ('localhost', 9090)
 print(sys.stderr, 'connecting to %s port %s' % server_address)
 sock.connect(server_address)
 
 try:
-    data = {
-      "id": 1,
-      "firstname": "Gian Permana",
-      "languages": [
-        {
-          "lang": "en",
-          "knowledge": "proficient"
-        },
-        {
-          "lang": "fr",
-          "knowledge": "advanced"
-        }
-      ],
-      "job": {
-        "site": "www.javacodegeeks.com",
-        "name": "Java Code Geeks"
-      }
-    } 
+    data = {"barcode": "GI31509009755000","license": "BG 0805 NV","date": "2017-11-13 16:40:38"}
     json = demjson.encode(data)
     print(json)
     

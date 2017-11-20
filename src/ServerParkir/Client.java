@@ -8,6 +8,7 @@ package ServerParkir;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.StringWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -24,33 +25,28 @@ public class Client {
     private static final int PORT = 9090;
     private static final String HOST = "localhost";
     private static Socket sock;
-    private static DataInputStream input;
-    private static DataOutputStream output;
+    private static DataInputStream dataInput;
+    private static DataOutputStream dataOutput;
 
     public static void main(String[] args) {
         try {
+            //Membuat saluran data
             sock = new Socket(HOST, PORT);
             System.out.println("Connected with server");
             System.out.println("with socket " + sock);
-            input = new DataInputStream(sock.getInputStream());
-            output = new DataOutputStream(sock.getOutputStream());
+            dataInput = new DataInputStream(sock.getInputStream());
+            dataOutput = new DataOutputStream(sock.getOutputStream());
 
+            //Membuat data dalam JSON
             JSONObject obj = new JSONObject();
             obj.put("barcode", "GI31509009755000");
             obj.put("license", "BG 0805 NV");
             obj.put("date", "2017-11-13 16:40:38");
             
-            StringWriter out = new StringWriter();
-            try {
-                obj.writeJSONString(out);
-            } catch (IOException ex) {
-                Logger.getLogger(JsonEncode.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            //Send Data
+            dataOutput.writeUTF(obj.toString());
             
-            output.writeUTF(out.toString());
-            
-            String jsonText = out.toString();
-            System.out.print(jsonText);
+            System.out.print(obj.toString());
 
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
