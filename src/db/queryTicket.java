@@ -40,7 +40,7 @@ public class queryTicket {
                 res.setExitGate(rs.getInt("exitgate"));
                 res.setExitTime(exitTime.format(rs.getTimestamp("exittime")).toString());
                 res.setPrice(rs.getInt("amounttopay"));
-//                res.setPaymentTime(rs.getString("paymenttime"));
+                res.setPaymentTime(exitTime.format(rs.getTimestamp("paymenttime")).toString());
                 res.setPaymentMethods(rs.getString("paymentmethods"));
                 res.setLicenseNumber(rs.getString("numberplate"));
                 res.setVehicleTypes(rs.getString("vehicletypes"));
@@ -52,7 +52,7 @@ public class queryTicket {
 //                res.setGateOutPicture2(rs.getString("gateoutpictwo"));
             }
         }catch(SQLException e){
-            Logger.getLogger(queryTicket.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(queryTicket.class.getName()).log(Level.SEVERE, null, e);            
         }
         connect.logOff();
         return res;
