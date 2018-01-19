@@ -11,13 +11,49 @@ package cls;
  */
 public class Member {
 
+    private String memberID;
+    private String name;
+    private String address;
+    private String mobile;
     private String licenseNumber;
     private String instansi;
-    private String name;
-    private String memberID;
+    private String validFrom;
+    private String validUntil;
     private String status;
 
     public Member() {
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getValidFrom() {
+        return validFrom;
+    }
+
+    public void setValidFrom(String validFrom) {
+        this.validFrom = validFrom;
+    }
+
+    public String getValidUntil() {
+        return validUntil;
+    }
+
+    public void setValidUntil(String validUntil) {
+        this.validUntil = validUntil;
     }
 
     public String getStatus() {
@@ -62,7 +98,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" + "licenseNumber=" + licenseNumber + ", instansi=" + instansi + ", name=" + name + ", memberID=" + memberID + ", status=" + status + '}';
+        return "Member{" + "memberID=" + memberID + ", name=" + name + ", address=" + address + ", licenseNumber=" + licenseNumber + ", instansi=" + instansi + ", validFrom=" + validFrom + ", validUntil=" + validUntil + ", status=" + status + '}';
     }
 
 }

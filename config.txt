@@ -1,0 +1,7 @@
+jdbc:mysql://192.168.43.149:3306/hexapark
+root
+
+D:\\Gian Permana\\Projects\\Hexapark\\Program\\GateOut\\dist
+192.168.43.149
+192.168.43.149
+1

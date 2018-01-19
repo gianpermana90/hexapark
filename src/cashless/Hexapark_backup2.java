@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hexapark;
+package cashless;
 
 import tools.WebcamCapture;
 import tools.Camera;
@@ -39,7 +39,7 @@ import javax.swing.JOptionPane;
  *
  * @author Hades
  */
-public class Hexapark extends javax.swing.JFrame {
+public class Hexapark_backup2 extends javax.swing.JFrame {
 
     private Ticket tkt = new Ticket();
     private CardLayout cl;
@@ -51,7 +51,7 @@ public class Hexapark extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    public Hexapark() {
+    public Hexapark_backup2() {
         initComponents();
         //setLocationRelativeTo(this);
         makeFrameFullSize(this);
@@ -145,10 +145,8 @@ public class Hexapark extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -816,7 +814,7 @@ public class Hexapark extends javax.swing.JFrame {
             //Pilihan 2
             new WebcamCapture().capture(tkt.getBarcode());
         } catch (IOException ex) {
-            Logger.getLogger(Hexapark.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Hexapark_backup2.class.getName()).log(Level.SEVERE, null, ex);
         }
         txtFin_Price.setText("Rp. " + "45.000" + ".-");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1066,14 +1064,22 @@ public class Hexapark extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Hexapark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Hexapark_backup2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1086,7 +1092,7 @@ public class Hexapark extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Hexapark().setVisible(true);
+                new Hexapark_backup2().setVisible(true);
             }
         });
     }
